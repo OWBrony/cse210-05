@@ -2,6 +2,10 @@ import constants
 from game.scripting.action import Action
 from game.shared.point import Point
 
+LEFT = Point(-constants.CELL_SIZE, 0)
+RIGHT = Point(constants.CELL_SIZE, 0)
+UP = Point(0, -constants.CELL_SIZE)
+DOWN = Point(0, constants.CELL_SIZE)
 
 class ControlActorsAction(Action):
     """
@@ -31,19 +35,19 @@ class ControlActorsAction(Action):
         """
         # left
         if self._keyboard_service.is_key_down('a'):
-            self._direction = Point(-constants.CELL_SIZE, 0)
+            self._direction = LEFT
         
         # right
         if self._keyboard_service.is_key_down('d'):
-            self._direction = Point(constants.CELL_SIZE, 0)
+            self._direction = RIGHT
         
         # up
         if self._keyboard_service.is_key_down('w'):
-            self._direction = Point(0, -constants.CELL_SIZE)
+            self._direction = UP
         
         # down
         if self._keyboard_service.is_key_down('s'):
-            self._direction = Point(0, constants.CELL_SIZE)
+            self._direction = DOWN
         
         snake = cast.get_first_actor("snakes")
         snake.turn_head(self._direction)
