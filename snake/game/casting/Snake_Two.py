@@ -1,10 +1,9 @@
-import Snake
+from game.casting.snake import Snake
+import constants
+from game.casting.actor import Actor
+from game.shared.point import Point
 
 class snake_two(Snake):
-    def __init__():
-        super().init()
-        self._segments = []
-        self._prepare_body()
 
     def _prepare_body(self):
         x = int(constants.MAX_X / 2.5)
