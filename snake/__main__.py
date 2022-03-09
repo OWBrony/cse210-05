@@ -7,6 +7,7 @@ from game.casting.snake import Snake
 from game.casting.Snake_Two import snake_two
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
+from game.scripting.control_actors_action_two import ControlActorsActionTwo
 from game.scripting.move_actors_action import MoveActorsAction
 from game.scripting.handle_collisions_action import HandleCollisionsAction
 from game.scripting.draw_actors_action import DrawActorsAction
@@ -32,6 +33,7 @@ def main():
 
     script = Script()
     script.add_action("input", ControlActorsAction(keyboard_service))
+    script.add_action("input", ControlActorsActionTwo(keyboard_service))
     script.add_action("update", MoveActorsAction())
     script.add_action("update", HandleCollisionsAction())
     script.add_action("output", DrawActorsAction(video_service))

@@ -1,4 +1,12 @@
-import ControlActorsAction from control_actors_action
+from game.scripting.control_actors_action import ControlActorsAction 
+import constants
+from game.scripting.action import Action
+from game.shared.point import Point
+
+LEFT = Point(-constants.CELL_SIZE, 0)
+RIGHT = Point(constants.CELL_SIZE, 0)
+UP = Point(0, -constants.CELL_SIZE)
+DOWN = Point(0, constants.CELL_SIZE)
 
 class ControlActorsActionTwo(ControlActorsAction):
     
@@ -25,5 +33,5 @@ class ControlActorsActionTwo(ControlActorsAction):
         if self._keyboard_service.is_key_down('k'):
             self._direction = DOWN
         
-        snake = cast.get_first_actor("snakes")
+        snake = cast.get_second_actor("snakes")
         snake.turn_head(self._direction)
