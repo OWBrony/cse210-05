@@ -18,19 +18,19 @@ class ControlActorsActionTwo(ControlActorsAction):
             script (Script): The script of Actions in the game.
         """
         # left
-        if self._keyboard_service.is_key_down('j'):
+        if self._keyboard_service.is_key_down('j') and self._direction != RIGHT:
             self._direction = LEFT
         
         # right
-        if self._keyboard_service.is_key_down('l'):
+        if self._keyboard_service.is_key_down('l') and self._direction != LEFT:
             self._direction = RIGHT
         
         # up
-        if self._keyboard_service.is_key_down('i'):
+        if self._keyboard_service.is_key_down('i') and self._direction != DOWN:
             self._direction = UP
         
         # down
-        if self._keyboard_service.is_key_down('k'):
+        if self._keyboard_service.is_key_down('k') and self._direction != UP:
             self._direction = DOWN
         
         snake = cast.get_second_actor("snakes")
