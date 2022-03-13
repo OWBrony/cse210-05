@@ -33,5 +33,5 @@ class ControlActorsActionTwo(ControlActorsAction):
         if self._keyboard_service.is_key_down('k') and self._direction != UP:
             self._direction = DOWN
         
-        snake = cast.get_second_actor("snakes")
+        snake = cast.get_second_actor("snake2")
         snake.turn_head(self._direction)

@@ -39,7 +39,7 @@ class HandleCollisionsAction(Action):
         score = cast.get_first_actor("scores")
         food = cast.get_first_actor("foods")
         snake = cast.get_first_actor("snakes")
-        snakeTwo = cast.get_second_actor("snakes")
+        snakeTwo = cast.get_second_actor("snake2")
         headTwo = snakeTwo.get_head()
         head = snake.get_head()
 
@@ -61,23 +61,27 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
+#Assign  parts of first snake to variables
         snake = cast.get_first_actor("snakes")
-        snakeTwo = cast.get_second_actor("snakes")
         head = snake.get_segments()[0]
-        headTwo = snakeTwo.get_segments()[0]
         segments = snake.get_segments()[1:]
+       
+
+#Assign parts of second snake to variables
+        snakeTwo = cast.get_second_actor("snake2")
         segmentsTwo = snakeTwo.get_segments()[1:]
-        
+        headTwo = snakeTwo.get_segments()[0]
+
+
+
+        for segment2 in segmentsTwo:
+            if head.get_position().equals(segment2.get_position()):
+                self._is_game_over = True
+
         for segment in segments:
-            if head.get_position().equals(segment.get_position()):
-                self._is_game_over = True
             if headTwo.get_position().equals(segment.get_position()):
                 self._is_game_over = True
-        for segment in segmentsTwo:
-            if headTwo.get_position().equals(segment.get_position()):
-                self._is_game_over = True
-            if head.get_position().equals(segment.get_position()):
-                self._is_game_over = True
+
         
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the snake and food white if the game is over.
@@ -87,7 +91,7 @@ class HandleCollisionsAction(Action):
         """
         if self._is_game_over:
             snake = cast.get_first_actor("snakes")
-            snakeTwo = cast.get_second_actor("snakes")
+            snakeTwo = cast.get_second_actor("snake2")
             segments = snake.get_segments()
             segmentsTwo = snakeTwo.get_segments()
             food = cast.get_first_actor("foods")
