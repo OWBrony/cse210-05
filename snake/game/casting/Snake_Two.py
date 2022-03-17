@@ -13,7 +13,7 @@ class snake_two(Snake):
             position = Point(x - i * constants.CELL_SIZE + 5, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.RED
+            color = self.get_head_color() if i == 0 else self.get_body_color()
 
             
             segment = Actor()
@@ -22,3 +22,6 @@ class snake_two(Snake):
             segment.set_text(text)
             segment.set_color(color)
             self._segments.append(segment)
+
+    def get_body_color(self):
+        return constants.RED

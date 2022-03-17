@@ -19,7 +19,6 @@ class Snake(Actor):
 
     def get_segments(self):
         return self._segments
-
     def move_next(self):
         # move all segments
         for segment in self._segments:
@@ -45,7 +44,7 @@ class Snake(Actor):
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
-            segment.set_color(constants.GREEN)
+            segment.set_color(self.get_body_color())
             self._segments.append(segment)
 
     def turn_head(self, velocity):
@@ -59,7 +58,7 @@ class Snake(Actor):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.GREEN
+            color = self.get_head_color() if i == 0 else self.get_body_color()
             
             segment = Actor()
             segment.set_position(position)
@@ -67,3 +66,8 @@ class Snake(Actor):
             segment.set_text(text)
             segment.set_color(color)
             self._segments.append(segment)
+    
+    def get_head_color(self):
+        return constants.YELLOW
+    def get_body_color(self):
+        return constants.GREEN   

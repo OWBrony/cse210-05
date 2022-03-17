@@ -32,6 +32,8 @@ def main():
     keyboard_service = KeyboardService()
     video_service = VideoService()
 
+
+#PlayerOnekeySet
     script = Script()
     script.add_action("input", ControlActorsAction(keyboard_service))
     script.add_action("input", ControlActorsActionTwo(keyboard_service))

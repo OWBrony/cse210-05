@@ -16,7 +16,7 @@ class ControlActorsAction(Action):
     Attributes:
         _keyboard_service (KeyboardService): An instance of KeyboardService.
     """
-
+#pass in keyset, self._key_set = key_set
     def __init__(self, keyboard_service):
         """Constructs a new ControlActorsAction using the specified KeyboardService.
         
@@ -25,7 +25,7 @@ class ControlActorsAction(Action):
         """
         self._keyboard_service = keyboard_service
         self._direction = Point(constants.CELL_SIZE, 0)
-
+#.iskeydown(self.__key_set)
     def execute(self, cast, script):
         """Executes the control actors action.
 
